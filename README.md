@@ -25,4 +25,3 @@ Google-Directions-Android: :https://github.com/jd-alexander/google-directions-an
 
 P.S: If ou're going to download the full project please use your own firebase API, the one in the project will NOT be mantained and the app may not work.
 # TRADEXII
-#TRADEXX
