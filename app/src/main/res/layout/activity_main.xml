@@ -11,12 +11,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="I'm a Driver"
+        android:text="@string/i_m_a_driver"
         android:id="@+id/driver"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="I'm a Customer"
+        android:text="@string/i_m_a_customer"
         android:id="@+id/customer"/>
 
 </LinearLayout>

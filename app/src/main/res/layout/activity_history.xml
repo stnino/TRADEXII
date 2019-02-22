@@ -13,26 +13,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
-            android:padding="20sp"
+            android:id="@+id/balance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="20sp"
             android:text="Balance: 0€"
-            android:id="@+id/balance"
-            android:visibility="gone"/>
+            android:visibility="visible" />
 
-<EditText
-    android:visibility="gone"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Paypal Email"
-    android:id="@+id/payoutEmail"/>
+        <EditText
+            android:id="@+id/payoutEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Paypal Email"
+            android:visibility="visible" />
+
         <Button
-            android:visibility="gone"
+            android:id="@+id/payout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="payout"
-            android:id="@+id/payout"/>
+            android:visibility="visible" />
 
         
     </LinearLayout>

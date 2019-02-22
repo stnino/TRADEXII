@@ -75,6 +75,11 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
     private String distance;
     private Double ridePrice;
     private Boolean customerPaid = false;
+    DatabaseReference basepricereference;
+    Double baseprice;
+    Double triptimecalc;
+    int triptime;
+    String triptimes;
 
     private GoogleMap mMap;
     private SupportMapFragment mMapFragment;
@@ -166,15 +171,36 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
                             mRatingBar.setRating(Integer.valueOf(child.getValue().toString()));
 
                         }
+                        if(child.getKey().equals("triptime")){
+
+                            triptime = (int) child.getValue();
+                            triptimecalc = Double.valueOf(triptime);
+                            triptimes = String.valueOf(triptimecalc);
+                        }
                         if (child.getKey().equals("customerPaid")){
                             customerPaid =true;
                         }
                         if (child.getKey().equals("distance")){
                             distance = child.getValue().toString();
-                            rideDistance.setText(distance.substring(0, Math.min(distance.length(), 5)) + " km");
-                            ridePrice = Double.valueOf(distance) * 0.5;
+
+
+
 
                         }
+                        if (child.getKey().equals("baseprice")){
+                             baseprice = (Double) child.getValue();
+
+                            rideDistance.setText(distance.substring(0, Math.min(distance.length(), 5)) + " km");
+
+                            //THIS IS THE PRICE CUSTOMER HAS TO  PAY , HE OR SHE HAS TO PAY
+                            // DRIVER OR SELLER IS GIVEN A DISCOUNT SO 0.4 AND HE OR SHE PAYS
+                            //WITH PAYPAL
+                            ridePrice = Double.valueOf(distance) * 0.5 + baseprice;
+
+                        }
+
+
+
                         if (child.getKey().equals("destination")){
                             rideLocation.setText(child.getValue().toString());
                         }

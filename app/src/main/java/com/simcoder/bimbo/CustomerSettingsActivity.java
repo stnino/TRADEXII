@@ -1,4 +1,5 @@
 package com.simcoder.bimbo;
+import com.google.android.gms.tasks.Task;
 import com.simcoder.*;
 import  com.simcoder.bimbo.*;
 import android.app.Activity;
@@ -167,7 +168,7 @@ public class CustomerSettingsActivity extends AppCompatActivity {
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                    Task<Uri> downloadUrl = taskSnapshot.getStorage().getDownloadUrl();
 
                     Map newImage = new HashMap();
                     newImage.put("profileImageUrl", downloadUrl.toString());

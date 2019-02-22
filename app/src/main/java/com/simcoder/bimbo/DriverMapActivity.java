@@ -1,5 +1,6 @@
 package com.simcoder.bimbo;
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -45,12 +46,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.protobuf.StringValue;
 
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.paypal.android.sdk.bl.R;
 
 public class DriverMapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener, RoutingListener {
 
@@ -65,9 +69,13 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
     private  Button reroute ;
     private int status = 0;
 
+
     private String customerId = "", destination;
     private LatLng destinationLatLng, pickupLatLng;
     private float rideDistance;
+    private  float Time;
+    String myCustomername;
+
 
 
      //Hmm.. WHAT CAN WE DO WITH ISLOGGING OUT..MANY..MANY THING
@@ -78,18 +86,30 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
 
     private LinearLayout mCustomerInfo;
 
+
     private ImageView mCustomerProfileImage;
 
     private TextView mCustomerName, mCustomerPhone, mCustomerDestination;
-
-    @Override
+     int TripTime;
+     int predictDistance;
+    String requestId;
+     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_map);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 
-        polylines = new ArrayList<>();
+         //I AM TRYING TO PASS THE HISTORY ACTIVITY REQUESTID HERE SO IT CAN BE GRABBED
+         Intent intent = new Intent(DriverMapActivity.this, HistoryActivity.class);
+         intent.putExtra("rideId",requestId);
+
+         // I AM TRYING TO PASS IT TO CUSTOMER MAP TO UPDATE THE CUSTOMER REQUEST OVER THERE TOO
+
+         Intent intents = new Intent(DriverMapActivity.this, HistoryActivity.class);
+         intents.putExtra("rideId",requestId);
+
+         polylines = new ArrayList<>();
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
 
@@ -181,6 +201,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
             public void onClick(View v) {
                 Intent intent = new Intent(DriverMapActivity.this, HistoryActivity.class);
                 intent.putExtra("customerOrDriver", "Drivers");
+                intent.putExtra("rideId",requestId );
                 startActivity(intent);
                 return;
             }
@@ -190,7 +211,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
 
     private void getAssignedCustomer(){
         String driverId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference assignedCustomerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverId).child("customerRequest").child("customerRideId");
+        DatabaseReference assignedCustomerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverId).child("customerRequest").child("customerId");
         assignedCustomerRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -254,7 +275,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
                         locationLng = Double.parseDouble(map.get(1).toString());
                     }
                     pickupLatLng = new LatLng(locationLat,locationLng);
-                    pickupMarker = mMap.addMarker(new MarkerOptions().position(pickupLatLng).title("pickup location").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pickup)));
+                    pickupMarker = mMap.addMarker(new MarkerOptions().position(pickupLatLng).title("pickup location").snippet(String.valueOf(rideDistance)).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pickup)));
                     getRouteToMarker(pickupLatLng);
                 }
             }
@@ -331,6 +352,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         // WITH THE CUSTOMERID THAT WE PULLED FROM
 
         DatabaseReference mCustomerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(customerId);
+
         mCustomerDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -338,6 +360,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
                     Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
                     if(map.get("name")!=null){
                         mCustomerName.setText(map.get("name").toString());
+                          myCustomername = map.get("name").toString();
                     }
                     if(map.get("phone")!=null){
                         mCustomerPhone.setText(map.get("phone").toString());
@@ -406,7 +429,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
 
         // IS THIS HOW WE PUSH KEY, YEAH
 
-        String requestId = historyRef.push().getKey();
+        requestId = historyRef.push().getKey();
 
         driverRef.child(requestId).setValue("driver", userId);
         driverRef.child(requestId).setValue("customer", customerId);
@@ -418,6 +441,8 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         driverRef.child(requestId).setValue("location/to/lat", destinationLatLng.latitude);
         driverRef.child(requestId).setValue("location/to/lng", destinationLatLng.longitude);
         driverRef.child(requestId).setValue("distance", rideDistance);
+        driverRef.child(requestId).setValue("triptime", TripTime);
+        driverRef.child(requestId).setValue("predictDistance", predictDistance);
 
         customerRef.child(requestId).setValue("driver", userId);
         customerRef.child(requestId).setValue("customer", customerId);
@@ -429,7 +454,8 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         customerRef.child(requestId).setValue("location/to/lat", destinationLatLng.latitude);
         customerRef.child(requestId).setValue("location/to/lng", destinationLatLng.longitude);
         customerRef.child(requestId).setValue("distance", rideDistance);
-
+        customerRef.child(requestId).setValue("triptime", TripTime);
+        customerRef.child(requestId).setValue("predictDistance", predictDistance);
           // WE DONT HAVE THIMGS LIKE DRIVER PAYOUT AND CUSTOMER PAY HERE, WE NEED TO FIX ALL THOSE BY ADDING THEM
 
                 // RECORDING IS THE CORE OF THE APP, FROM IT ALL TRANSACTIONS ADN DATA IS KNOWN
@@ -445,6 +471,9 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         map.put("location/to/lat", destinationLatLng.latitude);
         map.put("location/to/lng", destinationLatLng.longitude);
         map.put("distance", rideDistance);
+        map.put("triptime", TripTime);
+        map.put("predictDistance", predictDistance);
+
         //NOW HOW DOES RIDEID COME HERE TOO
 
         //WE CAN CREATE A DATABASE REFERENCE FOR RIDE AND THEN PUSH IT IN
@@ -490,6 +519,11 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
                      //HERE IF CUSTOMERID IS EMPTY, THAT IS WHY WE HAVE THE CUSTOMERID GOING =""
             if(!customerId.equals("")){
                 rideDistance += mLastLocation.distanceTo(location)/1000;
+
+
+                  //WE HAVE TO CALCULATE TIME
+                float Time = mLastLocation.getTime();
+
             }
 
             mLastLocation = location;
@@ -525,6 +559,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         }
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         mLocationRequest = new LocationRequest();
@@ -611,8 +646,10 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
             polyOptions.addAll(route.get(i).getPoints());
             Polyline polyline = mMap.addPolyline(polyOptions);
             polylines.add(polyline);
-
+                                  // I CAN GET DISTANCE AND TIME HERE
             Toast.makeText(getApplicationContext(),"Route "+ (i+1) +": distance - "+ route.get(i).getDistanceValue()+": duration - "+ route.get(i).getDurationValue(),Toast.LENGTH_SHORT).show();
+                     TripTime = route.get(i).getDurationValue();
+                 predictDistance = route.get(i).getDistanceValue();
         }
 
     }

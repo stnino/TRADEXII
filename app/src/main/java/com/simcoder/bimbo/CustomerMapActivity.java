@@ -1,4 +1,5 @@
 package com.simcoder.bimbo;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -78,8 +79,12 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     private TextView mDriverName, mDriverPhone, mDriverCar;
 
     private RadioGroup mRadioGroup;
-
+    DatabaseReference driverRef;
     private RatingBar mRatingBar;
+    String rideId;
+    String customerID;
+    DatabaseReference customerRef;
+    String customerRequestKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,7 +167,14 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
                     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                                     // we have to send the request to customer request
-                          DatabaseReference ref = FirebaseDatabase.getInstance().getReference("customerRequest");
+                    //WE MUST REALIZE THAT CUSTOMERREQUEST IS NOT THE SAME AS THE HISTROY KEY
+                    // IF THE REQUEST IS ACCEPTED, THERE IS A PARAMETER CALLED RIDE ID WHERE EVERYTHING IS INPUTED FROM
+
+                    rideId = getIntent().getExtras().getString("rideId");
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("customerRequest");
+                    driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID).child("customerRequest");
+                     customerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(customerID).child("customerRequest");
+
                     GeoFire geoFire = new GeoFire(ref);
                     geoFire.setLocation(userId, new GeoLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude()));
 
@@ -248,13 +260,40 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                                       // I CAN GET TEHE KEY TO PASS THIS WAY
                                     driverFoundID = dataSnapshot.getKey();
 
-                                    DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID).child("customerRequest");
+
+                                    driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID).child("customerRequest");
+                                    customerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(customerID).child("customerRequest");
+
+                                    rideId = getIntent().getExtras().getString("rideId");
                                     String customerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                                    customerRequestKey = driverRef.push().getKey();
+
+                                    driverRef.child(customerRequestKey).setValue("customerId", customerId);
+                                    driverRef.child(customerRequestKey).setValue("customerRideId", rideId);
+                                    driverRef.child(customerRequestKey).setValue("destination", destination);
+                                    driverRef.child(customerRequestKey).setValue("driverFoundID", driverFoundID);
+                                    driverRef.child(customerRequestKey).setValue("destinationLat", destinationLatLng.latitude);
+                                    driverRef.child(customerRequestKey).setValue("destinationLng", destinationLatLng);
+
+                                    customerRef.child(customerRequestKey).setValue("customerId", customerId);
+                                    customerRef.child(customerRequestKey).setValue("customerRideId", rideId);
+                                    customerRef.child(customerRequestKey).setValue("destination", destination);
+                                    customerRef.child(customerRequestKey).setValue("driverFoundID", driverFoundID);
+                                    customerRef.child(customerRequestKey).setValue("destinationLat", destinationLatLng.latitude);
+                                    customerRef.child(customerRequestKey).setValue("destinationLng", destinationLatLng);
+
+
+
+
                                     HashMap map = new HashMap();
-                                    map.put("customerRideId", customerId);
+                                    map.put("customerId", customerId);
+                                    map.put("customerRideId", rideId);
                                     map.put("destination", destination);
                                     map.put("destinationLat", destinationLatLng.latitude);
                                     map.put("destinationLng", destinationLatLng.longitude);
+                                    map.put("driverFoundID", driverFoundID);
+
                                     driverRef.updateChildren(map);
 
                                     getDriverLocation();
@@ -450,7 +489,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         driveHasEndedRef.removeEventListener(driveHasEndedRefListener);
 
         if (driverFoundID != null){
-            DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID).child("customerRequest");
+            driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID).child("customerRequest");
             driverRef.removeValue();
             driverFoundID = null;
 
@@ -521,6 +560,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         }
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         mLocationRequest = new LocationRequest();

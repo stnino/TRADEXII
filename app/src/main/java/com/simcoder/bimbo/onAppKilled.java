@@ -1,6 +1,6 @@
 package com.simcoder.bimbo;
 import com.simcoder.*;
-import  com.simcoder.tradex.*;
+
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;

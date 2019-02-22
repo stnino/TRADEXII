@@ -37,6 +37,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolders> {
         return rcv;
     }
 
+
+     //THIS IS WHERE WE SEE IT COME TO THE SCEEN AFTER THE TRIP. THIS IS THE PLACE WHERE WE SEE MANY HISTORIES
+    //WE CLICK ON ONE AND IT TAKES US TO HISTORY SINGLE TO SEE FURTHEER DETAIS ABOUT THE TRIP, BUT WHERE IS THE HISTORY OBJECT PULLING
     @Override
     public void onBindViewHolder(HistoryViewHolders holder, final int position) {
         holder.rideId.setText(itemList.get(position).getRideId());

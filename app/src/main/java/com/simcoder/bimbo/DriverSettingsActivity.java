@@ -1,5 +1,6 @@
 package com.simcoder.bimbo;
-import  com.simcoder.tradex.*;
+
+import com.google.android.gms.tasks.Task;
 import com.simcoder.*;
 import android.app.Activity;
 import android.content.Intent;
@@ -209,7 +210,7 @@ public class DriverSettingsActivity extends AppCompatActivity {
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                    Task<Uri> downloadUrl = taskSnapshot.getStorage().getDownloadUrl();
 
                     Map newImage = new HashMap();
                     newImage.put("profileImageUrl", downloadUrl.toString());

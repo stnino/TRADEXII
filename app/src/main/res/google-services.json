@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "821034813743",
-    "firebase_url": "https://tradex-f3d77.firebaseio.com",
-    "project_id": "tradex-f3d77",
-    "storage_bucket": "tradex-f3d77.appspot.com"
+    "project_number": "485145655835",
+    "firebase_url": "https://bimbo-b2663.firebaseio.com",
+    "project_id": "bimbo-b2663",
+    "storage_bucket": "bimbo-b2663.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:821034813743:android:8e2033993635f47c",
+        "mobilesdk_app_id": "1:485145655835:android:3f220006a8c43357",
         "android_client_info": {
-          "package_name": "com.simcoder.tradex"
+          "package_name": "com.simcoder.bimbo"
         }
       },
       "oauth_client": [
         {
-          "client_id": "821034813743-d5hbha7b5mvr1orm6rvaiehljo5ucopb.apps.googleusercontent.com",
+          "client_id": "485145655835-hcrt2vf88m7btn07g041hp7svha61mbp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.simcoder.bimbo",
+            "certificate_hash": "9be1dabd34a5dbfb2e8279c9c9de629f1fb77cbb"
+          }
+        },
+        {
+          "client_id": "485145655835-3ulleeo6odgjbm816q8kec1b7dkstcut.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAUt5oPbbb1Ci9aQb18CdGyyI_65Ufar9w"
+          "current_key": "AIzaSyANVxiIz1ZxEyb-SwJfYnzEqo9mbpqr5xg"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485145655835-3ulleeo6odgjbm816q8kec1b7dkstcut.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

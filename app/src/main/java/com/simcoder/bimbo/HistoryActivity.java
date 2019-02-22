@@ -23,7 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.simcoder.tradex.R;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -83,7 +83,7 @@ public class HistoryActivity extends AppCompatActivity {
         customerOrDriver = getIntent().getExtras().getString("customerOrDriver");
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         getUserHistoryIds();
-         // IF IT IS THE DRIVER THE BALANCE SHOULD BE VISIBLE
+         // IF IT IS THE DRIVER THE BALANCE SHOULD BE VISIBLE,MAYBE HE WANTS TO PAY FOR SOMEONE
         if(customerOrDriver.equals("Drivers")){
             mBalance.setVisibility(View.VISIBLE);
         }
@@ -231,12 +231,13 @@ public class HistoryActivity extends AppCompatActivity {
 
                             ridePrice = (Double.valueOf(dataSnapshot.child("price").getValue().toString()) * 0.4);
                             //I HAVE TO GET THE PRICES, PRODUCT TYPE AND PRODUCT NAME
+
                             Balance += ridePrice;
-                            Balance += productPrice;
-                            Balance -= DiscountRate;
-                          int  distancefare=   Integer.parseInt(distance);
-                            DistanceperDollar = distancefare/1;
-                               String Dollarpertrip = String.valueOf(DistanceperDollar);
+                          //  Balance += productPrice;
+                          //  Balance -= DiscountRate;
+                        //  int  distancefare=   Integer.parseInt(distance);
+                          //  DistanceperDollar = distancefare/1;
+                            //   String Dollarpertrip = String.valueOf(DistanceperDollar);
 
 
 
@@ -248,7 +249,8 @@ public class HistoryActivity extends AppCompatActivity {
 
                         }
                     }
-
+                   // HERE WE GRAB ALL THE OBJECTS SO THAT THEY CAN ALL BE SHOWN ON THE VIEW HOLDERS
+                    //VERY STRONGLY IT IS LEFT - RIGHT, FROM HERE TO VIEW HOLDERS
 
                     HistoryObject obj = new HistoryObject(rideId, getDate(timestamp));
                     resultsHistory.add(obj);
