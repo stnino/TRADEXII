@@ -12,31 +12,34 @@
         android:layout_height="100sp"
         android:id="@+id/profileImage"
         android:src="@mipmap/ic_default_user"
-        android:layout_marginBottom="20sp"/>
+        android:layout_marginBottom="20sp"
+        android:contentDescription="@string/call_bus_driver"
+        />
     <EditText
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:hint="Name"
-        android:layout_marginBottom="20sp"/>
+        android:hint="@string/name"
+        android:layout_marginBottom="20sp"
+        android:inputType="" />
     <EditText
         android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:hint="Phone"
+        android:hint="@string/phone"
         android:layout_marginBottom="20sp"
-        android:inputType="number"/>
+        android:inputType="phone"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/confirm"
-        android:text="confirm"/>
+        android:text="@string/confirm"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/back"
-        android:text="back"/>
+        android:text="@string/back"/>
 
 </LinearLayout>

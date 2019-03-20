@@ -9,38 +9,44 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:layout="@layout/activity_driver_map"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        style="?android:buttonBarStyle">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            style="?android:buttonBarStyle">
             <Button
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/logout"
-                android:text="logout"/>
+                android:text="@string/logout"
+                style="?android:attr/borderlessButtonStyle"/>
             <Button
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/history"
-                android:text="history"/>
+                android:text="@string/history"
+                style="?android:attr/borderlessButtonStyle"/>
             <Button
                 android:layout_weight="1"
                 android:layout_gravity="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/settings"
-                android:text="Settings"/>
+                android:text="@string/settings"
+                style="?android:attr/borderlessButtonStyle"/>
         </LinearLayout>
         <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Working"
+            android:text="@string/working"
             android:layout_margin="10sp"
             android:id="@+id/workingSwitch"/>
     </LinearLayout>
@@ -56,28 +62,33 @@
         android:background="@android:color/white"
         android:visibility="gone"
         android:elevation="1dp"
-        android:translationZ="1dp">
+        android:translationZ="1dp" tools:targetApi="lollipop">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            style="?android:buttonBarStyle">
             <ImageView
                 android:layout_width="100sp"
                 android:layout_height="100sp"
                 android:id="@+id/customerProfileImage"
                 android:src="@mipmap/ic_default_user"
-                android:padding="20sp"/>
+                android:padding="20sp"
+                android:contentDescription="@string/todo" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingLeft="40sp">
+                android:paddingLeft="40sp"
+                android:paddingStart="40sp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/customerDestination"
                     android:paddingBottom="10sp"
-                    android:text="Destination: --"/>
+                    android:text="@string/destination"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -95,8 +106,9 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="picked customer"
-            android:id="@+id/rideStatus"/>
+            android:text="@string/picked_customer"
+            android:id="@+id/rideStatus"
+            style="?android:attr/borderlessButtonStyle"/>
 
 
     </LinearLayout>

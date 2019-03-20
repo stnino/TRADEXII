@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">TradeX</string>
     <string name="title_activity_driver_map">Map</string>
     <string name="title_activity_main2">Main2Activity</string>
@@ -36,4 +36,68 @@
     <string name="uberx">UberX</string>
     <string name="logout">logout</string>
     <string name="settings">Settings</string>
+    <string name="history">history</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="login">login</string>
+    <string name="registration">registration</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="confirm">confirm</string>
+    <string name="back">back</string>
+    <string name="call_bus_driver">Call Bus Driver</string>
+
+
+
+
+
+
+
+    <string name="working">Working</string>
+
+
+    <string name="todo">TODO</string>
+
+
+
+
+
+
+
+    <string name="car">Car</string>
+    <string name="select_driver_picture">Select Driver picture</string>
+    <string name="balance_0">Balance: 0€</string>
+    <string name="paypal_email">Paypal Email</string>
+    <string name="payout">payout</string>
+
+    <string name="from_tos">From-To</string>
+    <string name="baseprice">Baseprice</string>
+    <string name="rideprice">Rideprice</string>
+
+    <string name="date">date:</string>
+    <string name="_30th_june_2017">30th June 2017</string>
+    <string name="_0s">0s</string>
+    <string name="_0_usd">0 USD</string>
+    <string name="names">name</string>
+    <string name="phones">phone</string>
+    <string name="pay_here">Pay Here</string>
+    <string name="eta">ETA:</string>
+    <string name="view_user_s_image">View User\'s image</string>
+    <string name="destination">Destination: --</string>
+    <string name="picked_customer">picked customer</string>
+    <string name="customer_profile_image">Customer profile image</string>
+    <string name="emailss">Email</string>
+    <string name="emailsd">Email</string>
+    <string name="uberblackS">Uberblack</string>
+    <string name="uberblackxiSS">UberblackXI</string>
+    <string name="passport_noSS">PASSPORT NO.</string>
+    <string name="descriptionSS">DESCRIPTION</string>
+    <string name="operationSS">OPERATION</string>
+    <string name="residenceSS">RESIDENCE</string>
+    <string name="in_order_to_provide_safety_and_security_for_members_of_this_community_we_will_like_you_to_provide_these_additional_informationSS">In order to provide safety and security for members of this community, we will like you to provide these additional information</string>
+    <string name="click_button_to_set_office_locationSS">CLICK BUTTON TO SET OFFICE LOCATION</string>
+    <string name="set_your_passport_picturess">set your passport picture</string>
+    <string name="set_the_operationss">set the operation</string>
+    <string name="set_the_descriptionss">set the description</string>
+    <string name="set_the_residencess">set the residence</string>
 </resources>

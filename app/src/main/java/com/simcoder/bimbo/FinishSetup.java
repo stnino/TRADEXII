@@ -144,6 +144,10 @@ public class FinishSetup extends AppCompatActivity {
 
                                 startActivity(new Intent(FinishSetup.this, DriverMapActivity.class));
 
+
+                                // I have to develop an algorithm to to pick up the gps code
+
+
                             }
                         }
                     });

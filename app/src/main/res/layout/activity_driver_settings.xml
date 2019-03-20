@@ -6,34 +6,38 @@
     android:layout_height="match_parent"
     tools:context="com.simcoder.bimbo.CustomerSettingsActivity"
     android:orientation="vertical"
-    android:padding="20sp">
+    android:padding="20sp"
+    style="?android:buttonBarStyle">
     <ImageView
         android:layout_width="100sp"
         android:layout_height="100sp"
         android:id="@+id/profileImage"
         android:src="@mipmap/ic_default_user"
-        android:layout_marginBottom="20sp"/>
+        android:layout_marginBottom="20sp"
+        android:contentDescription="@string/select_driver_picture" />
     <EditText
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:hint="Name"
-        android:layout_marginBottom="20sp"/>
+        android:hint="@string/name"
+        android:layout_marginBottom="20sp"
+        android:inputType="" />
     <EditText
         android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:hint="Phone"
+        android:hint="@string/phone"
         android:layout_marginBottom="20sp"
-        android:inputType="number"/>
+        android:inputType="phone"/>
     <EditText
         android:id="@+id/car"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:hint="Car"
+        android:hint="@string/car"
+        android:inputType="text"
         android:layout_marginBottom="20sp"/>
     <RadioGroup
         android:layout_width="match_parent"
@@ -43,29 +47,34 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="UberX"
-            android:id="@+id/UberX"/>
+            android:text="@string/uberx"
+            android:id="@+id/UberX"
+            style="?android:attr/borderlessButtonStyle"/>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="UberBlack"
-            android:id="@+id/UberBlack"/>
+            android:text="@string/uberblackS"
+            android:id="@+id/UberBlack"
+            style="?android:attr/borderlessButtonStyle"/>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="UberXl"
-            android:id="@+id/UberXl"/>
+            android:text="@string/uberblackxiSS"
+            android:id="@+id/UberXl"
+            style="?android:attr/borderlessButtonStyle"/>
     </RadioGroup>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/confirm"
-        android:text="confirm"/>
+        android:text="@string/confirm"
+        style="?android:attr/borderlessButtonStyle"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/back"
-        android:text="back"/>
+        android:text="@string/back"
+        style="?android:attr/borderlessButtonStyle"/>
 
 </LinearLayout>

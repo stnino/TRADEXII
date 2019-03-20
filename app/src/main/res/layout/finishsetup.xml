@@ -18,12 +18,13 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="PASSPORT NO."
+        android:text="@string/passport_noSS"
         app:layout_constraintBottom_toTopOf="@+id/setoperation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:hint="@string/set_your_passport_picturess"
         app:layout_constraintVertical_bias="0.63" />
 
     <EditText
@@ -38,13 +39,14 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="OPERATION"
+        android:text="@string/operationSS"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.687" />
+        app:layout_constraintVertical_bias="0.687"
+        android:hint="@string/set_the_operationss"/>
 
     <EditText
         android:id="@+id/setdescription"
@@ -58,11 +60,12 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="DESCRIPTION"
+        android:text="@string/descriptionSS"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="@string/set_the_descriptionss"/>
 
     <EditText
         android:id="@+id/setresidence"
@@ -76,13 +79,14 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="RESIDENCE"
+        android:text="@string/residenceSS"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.83" />
+        app:layout_constraintVertical_bias="0.83"
+        android:hint="@string/set_the_residencess"/>
 
     <TextView
         android:id="@+id/setinformation"
@@ -94,7 +98,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="In order to provide safety and security for members of this community, we will like you to provide these additional information"
+        android:text="@string/in_order_to_provide_safety_and_security_for_members_of_this_community_we_will_like_you_to_provide_these_additional_informationSS"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -119,7 +123,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.936"
-        app:srcCompat="@android:drawable/ic_notification_overlay" />
+        app:srcCompat="@android:drawable/ic_notification_overlay"
+        android:focusable="true" />
 
     <TextView
         android:id="@+id/setofficelocationinfo"
@@ -131,8 +136,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="CLICK BUTTON TO SET
-        OFFICE LOCATION"
+        android:text="@string/click_button_to_set_office_locationSS"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.422"

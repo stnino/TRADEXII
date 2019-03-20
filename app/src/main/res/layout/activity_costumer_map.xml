@@ -10,7 +10,9 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:layout="@layout/activity_costumer_map"
+        />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -18,26 +20,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/buttons">
+            android:id="@+id/buttons"
+            style="?android:buttonBarStyle">
             <Button
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/logout"
                 android:text="@string/logout"
+                style="?android:attr/borderlessButtonStyle"
                 />
             <Button
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/history"
-                android:text="history"/>
+                android:text="@string/history"
+                style="?android:attr/borderlessButtonStyle"/>
             <Button
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/settings"
-                android:text="@string/settings"/>
+                android:text="@string/settings"
+                style="?android:attr/borderlessButtonStyle"/>
         </LinearLayout>
 
         <android.support.v7.widget.CardView
@@ -115,7 +121,8 @@
             android:background="@android:color/white"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            style="?android:buttonBarStyle">
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,17 +132,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/uberx"
-                    android:id="@+id/UberX"/>
+                    android:id="@+id/UberX"
+                    style="?android:attr/borderlessButtonStyle"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/uberblack"
-                    android:id="@+id/UberBlack"/>
+                    android:id="@+id/UberBlack"
+                    style="?android:attr/borderlessButtonStyle"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/uberxl"
-                    android:id="@+id/UberXl"/>
+                    android:id="@+id/UberXl"
+                    style="?android:attr/borderlessButtonStyle"/>
             </RadioGroup>
 
             <Button
@@ -143,7 +153,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/call_uber"
-                android:id="@+id/request"/>
+                android:id="@+id/request"
+                style="?android:attr/borderlessButtonStyle"
+
+                />
         </LinearLayout>
     </LinearLayout>
 

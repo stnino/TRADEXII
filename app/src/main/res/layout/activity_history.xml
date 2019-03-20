@@ -12,29 +12,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        style="?android:buttonBarStyle">
 
         <TextView
             android:id="@+id/balance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20sp"
-            android:text="Balance: 0€"
+            android:text="@string/balance_0"
             android:visibility="visible" />
 
         <EditText
             android:id="@+id/payoutEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Paypal Email"
-            android:visibility="visible" />
+            android:hint="@string/paypal_email"
+            android:visibility="visible"
+            android:inputType="textEmailAddress" />
 
         <Button
             android:id="@+id/payout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="payout"
-            android:visibility="visible" />
+            android:hint="@string/payout"
+            android:visibility="visible"
+            style="?android:attr/borderlessButtonStyle"/>
 
         
     </LinearLayout>

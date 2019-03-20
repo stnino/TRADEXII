@@ -18,7 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:id="@+id/map"/>
+            android:id="@+id/map"
+            tools:layout="@layout/activity_history_single"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,7 +35,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20sp"
                     android:text="@string/from_to"
-                    tools:text="Product" />
+                    tools:text="Product"
+
+                    android:layout_toStartOf="@+id/Productboughtname"
+                    android:layout_toLeftOf="@+id/Productboughtname" />
 
                 <TextView
                     android:id="@+id/Productboughtname"
@@ -43,7 +47,9 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
                     android:text="@string/tech_asokwah"
-                    tools:text="Rc revolver" />
+                    tools:text="Rc revolver"
+                    android:layout_alignParentRight="true"
+                    />
             </RelativeLayout>
             <!--HOW TO SHOW THE PLACES BETWEEN THEM -->
 
@@ -55,7 +61,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20sp"
-                android:text="@string/distance" />
+                android:text="@string/distance"
+                android:layout_toStartOf="@+id/rideDistanceShow"
+                android:layout_toLeftOf="@+id/rideDistanceShow"/>
 
                 <TextView
                     android:id="@+id/rideDistanceShow"
@@ -66,7 +74,11 @@
                     android:layout_marginStart="66dp"
                     android:text="@string/_0"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="66dp" />
+                    android:layout_marginLeft="66dp"
+                    android:layout_toStartOf="@+id/rideDate"
+                    android:layout_toLeftOf="@+id/rideDate"
+
+                    />
 
                 <TextView
                     android:id="@+id/rideDate"
@@ -75,9 +87,14 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginEnd="115dp"
-                    android:text="date:"
+                    android:text="@string/date"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="115dp" />
+                    android:layout_marginRight="115dp"
+                    android:layout_toStartOf="@+id/rideDateShow"
+                    android:layout_toLeftOf="@+id/rideDateShow"
+
+
+                    />
 
                 <TextView
                     android:id="@+id/rideDateShow"
@@ -85,30 +102,30 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
-                    android:text="30th June 2017"
+                    android:text="@string/_30th_june_2017"
                     android:layout_alignParentRight="true" />
 
             </RelativeLayout>
+
              <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/ExpectedarrivalTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20sp"
-                android:text="ETA:" />
 
-                <TextView
-                    android:id="@+id/ExpectedarrivalTimeShown"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="45dp"
-                    android:text="0s"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="45dp" />
+                 <TextView
+                     android:id="@+id/ExpectedarrivalTimeShown"
+                     android:layout_width="10dp"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentLeft="true"
+                     android:layout_alignParentStart="true"
+                     android:layout_alignParentTop="true"
+                     android:layout_marginEnd="22dp"
+                     android:layout_marginLeft="45dp"
+                     android:layout_marginRight="22dp"
+                     android:layout_marginStart="45dp"
+                     android:layout_toLeftOf="@+id/FromTo"
+                     android:layout_toStartOf="@+id/FromTo"
+                     android:text="@string/_0s"
+                     />
 
                  <TextView
                      android:id="@+id/FromTo"
@@ -117,9 +134,12 @@
                      android:layout_alignParentStart="true"
                      android:layout_alignParentTop="true"
                      android:layout_marginStart="77dp"
-                     android:text="From-To"
+                     android:text="@string/from_tos"
                      android:layout_alignParentLeft="true"
-                     android:layout_marginLeft="77dp" />
+                     android:layout_marginLeft="77dp"
+                     android:layout_toStartOf="@+id/FromToWhere"
+                     android:layout_toLeftOf="@+id/FromToWhere"
+                     />
 
                  <TextView
                      android:layout_width="wrap_content"
@@ -128,11 +148,16 @@
                      android:layout_alignParentStart="true"
                      android:layout_alignParentTop="true"
                      android:layout_marginLeft="77dp"
+                     android:text="@string/from_tos"
+                     android:id="@+id/FromToWhere"
                      android:layout_marginStart="77dp"
-                     android:text="From-To" />
+
+
+                     />
 
 
             </RelativeLayout>
+
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -144,8 +169,11 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:text="Baseprice"
-                    android:layout_alignParentLeft="true" />
+                    android:text="@string/baseprice"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toStartOf="@+id/RidepriceShown"
+                    android:layout_toLeftOf="@+id/RidepriceShown"
+                    />
 
                 <TextView
                     android:id="@+id/RidepriceShown"
@@ -154,8 +182,12 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginEnd="13dp"
-                    android:text="0 USD"
-                    android:layout_alignParentRight="true" />
+                    android:text="@string/_0_usd"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="13dp"
+                    android:layout_toStartOf="@+id/Rideprice"
+                    android:layout_toLeftOf="@+id/Rideprice"
+                    />
 
                 <TextView
                     android:id="@+id/Rideprice"
@@ -164,9 +196,12 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginEnd="84dp"
-                    android:text="Rideprice"
+                    android:text="@string/rideprice"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="84dp" />
+                    android:layout_marginRight="84dp"
+                    android:layout_toStartOf="@+id/BasepriceShown"
+                    android:layout_toLeftOf="@+id/BasepriceShown"
+                    />
 
                 <TextView
                     android:id="@+id/BasepriceShown"
@@ -175,7 +210,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="76dp"
-                    android:text="0 USD"
+                    android:text="@string/_0_usd"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="76dp" />
 
@@ -193,23 +228,24 @@
                 android:layout_height="100dp"
                 android:id="@+id/userImage"
                 android:src="@mipmap/ic_default_user"
-                android:contentDescription="TODO" />
+                android:contentDescription="@string/view_user_s_image" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20sp">
+                android:layout_marginTop="20sp"
+                android:layout_marginStart="10dp">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="name"
+                    android:text="@string/names"
                     android:layout_marginBottom="20sp"
                     android:id="@+id/userName"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="phone"
+                    android:text="@string/phones"
                     android:layout_marginBottom="20sp"
                     android:id="@+id/userPhone"/>
             </LinearLayout>
@@ -226,7 +262,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/pay"
-            android:text="Pay Here"
+            android:text="@string/pay_here"
             android:visibility="gone"
             android:enabled="false"/>
     </LinearLayout>

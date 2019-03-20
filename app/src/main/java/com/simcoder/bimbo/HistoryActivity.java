@@ -25,10 +25,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -94,12 +99,13 @@ public class HistoryActivity extends AppCompatActivity {
           }
       });
     }
-
+       public static final MediaType MEDIA_TYPE = MediaType.parse("application/json");
      ProgressDialog progressDialog;
 
     // IF CUSTOMERORDRIVER == "CUSTOMER ",
     // THERE SHOULD BE A PAYOUT BUTTON VISIBLE, ELSE THE PAYOUT BUTTON SHOULD NOT BE,
     //WHY SHOULD I PAY FOR MY OWN RIDE
+    //in the real world drivers may sometimes want to payout
     private void payoutRequest() {
        progressDialog = new ProgressDialog(this);
        progressDialog.setTitle("Processing your payout");
@@ -108,16 +114,17 @@ public class HistoryActivity extends AppCompatActivity {
        progressDialog.show();
 
        final OkHttpClient client = new OkHttpClient();
-        JsonObject postData = new JsonObject();
-        try{
-            postData.put("uid", FirebaseAuth.getInstance().getUid());
-            postData.put("email", mPayoutEmail.getText().toString());
+        Map<String, JSONObject> userMap= new HashMap<String, JSONObject>();
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("uid",FirebaseAuth.getInstance().getUid());
+            postData.put("email",FirebaseAuth.getInstance().getUid());
+        }
+        catch (JSONException e){
+e.printStackTrace();
+        }
+        RequestBody body = RequestBody.create(MEDIA_TYPE, postData.toString());
 
-        }
-        catch (Exception e){
-           e.printStackTrace();
-        }
-        RequestBody body = RequestBody.create(MediaType, postData.toString());
             //WE WILD DEAL WITH THE PAYMENT AND URL STUFF
          final Request request = new Request.Builder().url("https://us0centrall=uberapp-408c8.cloudfunctions.net/payout").post(body).
                  addHeader("Content-Type", "application/json")
