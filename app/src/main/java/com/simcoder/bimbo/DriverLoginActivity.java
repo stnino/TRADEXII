@@ -76,7 +76,7 @@ public class DriverLoginActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                if(user!=null){
+             /*   if(user!=null){
 
                     // WE HAVE TO CHECK THE DATA HERE AND SEE IF THESE DETAILS ARE EXISTING AND THEN WE
                      // FLIP TO THE NEXT STAGE
@@ -85,7 +85,7 @@ public class DriverLoginActivity extends AppCompatActivity {
                     finish();
                     return;
                 }
-            }
+           */ }
         };
 
         //THERE HAS TO BE AN UPDATE PRODUCT ACTIVITY

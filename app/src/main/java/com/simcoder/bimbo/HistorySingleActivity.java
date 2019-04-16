@@ -99,8 +99,8 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
 
         rideId = getIntent().getExtras().getString("rideId");
 
-        mMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-
+        mMapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
         //HMM..
         //LOOKS LIKE MAP FRAGMENT IS HERE BUT THAT IS TRICKY, SO IS THIS A SORT OF MAP GRABBER FOR HISTORYSINGLEACTIVITY AND DRIVER MAP ACTIVITY
 

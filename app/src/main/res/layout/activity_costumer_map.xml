@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.simcoder.bimbo.CustomerLoginActivity" >
+    tools:context="com.simcoder.bimbo.CustomerMapActivity" >
 
 
     <fragment
@@ -11,7 +11,7 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/activity_costumer_map"
+
         />
 
     <RelativeLayout
