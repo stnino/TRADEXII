@@ -84,6 +84,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     String rideId;
     String customerID;
     DatabaseReference customerRef;
+    DatabaseReference requestRef;
     String customerRequestKey;
 
     @Override
@@ -263,11 +264,11 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
                                     driverRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID).child("customerRequest");
                                     customerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(customerID).child("customerRequest");
-
+                                    requestRef = FirebaseDatabase.getInstance().getReference().child("customerRequest");
                                     rideId = getIntent().getExtras().getString("rideId");
                                     String customerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                                    customerRequestKey = driverRef.push().getKey();
+                                    customerRequestKey = requestRef.push().getKey();
 
                                     driverRef.child(customerRequestKey).setValue("customerId", customerId);
                                     driverRef.child(customerRequestKey).setValue("customerRideId", rideId);
@@ -294,7 +295,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                                     map.put("destinationLng", destinationLatLng.longitude);
                                     map.put("driverFoundID", driverFoundID);
 
-                                    driverRef.updateChildren(map);
+                                    requestRef.updateChildren(map);
 
                                     getDriverLocation();
                                     getDriverInfo();
@@ -423,8 +424,8 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     *-------------------------------------------------------------------*/
     private void getDriverInfo(){
         mDriverInfo.setVisibility(View.VISIBLE);
-        DatabaseReference mCustomerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID);
-        mCustomerDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference mDriverIcalledDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID);
+        mDriverIcalledDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){

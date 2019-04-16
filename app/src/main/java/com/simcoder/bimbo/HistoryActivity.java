@@ -117,8 +117,8 @@ public class HistoryActivity extends AppCompatActivity {
         Map<String, JSONObject> userMap= new HashMap<String, JSONObject>();
         JSONObject postData = new JSONObject();
         try {
-            postData.put("uid",FirebaseAuth.getInstance().getUid());
-            postData.put("email",FirebaseAuth.getInstance().getUid());
+            postData.put("uid",FirebaseAuth.getInstance().getCurrentUser().getUid());
+            postData.put("email",FirebaseAuth.getInstance().getCurrentUser().getEmail());
         }
         catch (JSONException e){
 e.printStackTrace();
@@ -139,7 +139,7 @@ e.printStackTrace();
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(Call call, Response response) {
                int responseCode = response.code();
                if (response.isSuccessful()){
 

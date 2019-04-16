@@ -5,11 +5,16 @@ buildscript {
         jcenter()
         google()
         mavenCentral()
+
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.1'
+        classpath 'com.android.tools.build:gradle:3.3.2'
 
         classpath 'com.google.gms:google-services:4.2.0'
+//https://mvnrepository.com/artifact/com.android.support/support-content
+        //noinspection GradleCompatible
+
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -19,9 +24,24 @@ allprojects {
     repositories {
         jcenter()
         google()
+        mavenCentral()
+
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
+
+    // See https://stackoverflow.com/a/42718231/82609
+    project.configurations.all {
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'com.android.support'
+                    && !details.requested.name.contains('multidex')) {
+                details.useVersion "$supportlib_version"
+            }
+        }
+    }
+
+
+
+    task clean(type: Delete) {
+        delete rootProject.buildDir
+    }

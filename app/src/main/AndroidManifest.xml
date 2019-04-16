@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.simcoder.Bimbo">
+    package="com.simcoder.bimbo">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -25,18 +25,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service
-            android:name="com.simcoder.bimbo.onAppKilled"
+            android:name=".onAppKilled"
             android:stopWithTask="false" />
 
-        <activity android:name="com.simcoder.bimbo.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.simcoder.bimbo.DriverLoginActivity" />
-        <activity android:name="com.simcoder.bimbo.CustomerLoginActivity" />
+        <activity android:name=".DriverLoginActivity" />
+        <activity android:name=".CustomerLoginActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -50,7 +50,7 @@
             android:value="AIzaSyB17Pg2TFXIiy4YIc1Rq0GfI_HoWxl8imI" />
 
         <service
-            android:name="com.simcoder.bimbo.MyFirebaseInstanceIDService"
+            android:name=".MyFirebaseInstanceIDService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -58,22 +58,22 @@
             </intent-filter>
         </service>
         <service
-            android:name="com.simcoder.bimbo.MyService">
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
         <activity
-            android:name="com.simcoder.bimbo.DriverMapActivity"
+            android:name=".DriverMapActivity"
             android:label="@string/title_activity_driver_map" />
-        <activity android:name="com.simcoder.bimbo.CustomerMapActivity" />
-        <activity android:name="com.simcoder.bimbo.CustomerSettingsActivity" />
-        <activity android:name="com.simcoder.bimbo.DriverSettingsActivity" />
-        <activity android:name="com.simcoder.bimbo.HistoryActivity" />
-        <activity android:name="com.simcoder.bimbo.HistorySingleActivity" />
-
-
+        <activity android:name=".CustomerMapActivity" />
+        <activity android:name=".CustomerSettingsActivity" />
+        <activity android:name=".DriverSettingsActivity" />
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".HistorySingleActivity" />
     </application>
 
 </manifest>

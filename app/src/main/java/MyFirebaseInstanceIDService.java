@@ -1,20 +1,11 @@
-package com.simcoder.bimbo;
-
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
 import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
-import static com.firebase.ui.auth.ui.email.RegisterEmailFragment.TAG;
+import static io.fabric.sdk.android.Fabric.TAG;
 
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
-    public MyFirebaseInstanceIDService() {
-    }
-
-
     @Override
     public void onTokenRefresh() {
         // Get updated InstanceID token.
@@ -29,4 +20,6 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
     private void sendRegistrationToServer(String refreshedToken) {
     }
+
+
 }

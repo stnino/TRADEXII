@@ -126,7 +126,7 @@ public class DriverSettingsActivity extends AppCompatActivity {
                         mPhoneField.setText(mPhone);
                     }
                  // WE CAN GET THE TRADE AREA OF TRADE HERE AND PASSPORT NUMBER OR NATIONAL ID
-
+       //THIS PART REPRESENTS THE KIND OF TRADING SERVICE WE PROVIDE
                     if(map.get("car")!=null){
                         mCar = map.get("car").toString();
                         mCarField.setText(mCar);
