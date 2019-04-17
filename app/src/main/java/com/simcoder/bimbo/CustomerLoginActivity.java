@@ -62,7 +62,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
                 signIn();
             }
         });
-
         mAuth = FirebaseAuth.getInstance();
 
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -102,6 +101,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
                             Toast.makeText(CustomerLoginActivity.this, "sign up error", Toast.LENGTH_SHORT).show();
                         }else{
                             String user_id = mAuth.getCurrentUser().getUid();
+
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(user_id);
                             current_user_db.setValue(true);
                         }
