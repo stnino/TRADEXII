@@ -31,19 +31,19 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="From - To"
+                android:text="@string/from_to"
                 android:layout_marginBottom="20sp"
                 android:id="@+id/rideLocation"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="distance"
+                android:text="@string/distance"
                 android:layout_marginBottom="20sp"
                 android:id="@+id/rideDistance"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="date"
+                android:text="@string/datess"
                 android:layout_marginBottom="20sp"
                 android:id="@+id/rideDate"/>
         </LinearLayout>
@@ -56,23 +56,25 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/userImage"
-                android:src="@mipmap/ic_default_user"/>
+                android:src="@mipmap/ic_default_user"
+                android:contentDescription="@string/for_users" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20sp">
+                android:layout_marginTop="20sp"
+                android:layout_marginStart="10dp">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="name"
+                    android:text="@string/namess"
                     android:layout_marginBottom="20sp"
                     android:id="@+id/userName"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="phone"
+                    android:text="@string/phoness"
                     android:layout_marginBottom="20sp"
                     android:id="@+id/userPhone"/>
             </LinearLayout>
@@ -89,7 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/pay"
-            android:text="Pay Here"
+            android:text="@string/pay_here"
             android:visibility="gone"
             android:enabled="false"/>
     </LinearLayout>

@@ -30,11 +30,11 @@
         android:id="@+id/registration"/>
 
     <com.google.android.gms.common.SignInButton
+        android:id="@+id/customersigninbtngoogle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="120dp"
-        android:layout_marginTop="5dp"
-        android:id="@+id/customersigninbtngoogle"
-        android:layout_marginStart="120dp"></com.google.android.gms.common.SignInButton>
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="5dp"></com.google.android.gms.common.SignInButton>
 
 </LinearLayout>

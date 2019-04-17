@@ -22,7 +22,7 @@
         completions."
     </string>
     <string name="gridlayout">GRIDLAYOUT</string>
-    <string name="from_to">From - To</string>
+    <string name="from_toss">From - To</string>
     <string name="tech_asokwah">Tech-Asokwah</string>
     <string name="time">time</string>
     <string name="rideid">rideId</string>
@@ -100,4 +100,13 @@
     <string name="set_the_operationss">set the operation</string>
     <string name="set_the_descriptionss">set the description</string>
     <string name="set_the_residencess">set the residence</string>
+    <string name="call_Trader" />
+    <string name="call_trader">call_Trader</string>
+    <string name="from_to">From - To</string>
+    <string name="distancess">distance</string>
+    <string name="datess">date</string>
+    <string name="namess">name</string>
+    <string name="phoness">phone</string>
+    <string name="pay_heress">Pay Here</string>
+    <string name="for_users">for user</string>
 </resources>

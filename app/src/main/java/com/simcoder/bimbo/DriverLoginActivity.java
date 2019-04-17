@@ -41,8 +41,8 @@ public class DriverLoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_driver_login);
         GoogleBtn = findViewById(R.id.signinbtngoogle);
+        setContentView(R.layout.activity_driver_login);
 
 
 
