@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.simcoder.bimbo">
 
     <!--
@@ -48,6 +49,10 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB17Pg2TFXIiy4YIc1Rq0GfI_HoWxl8imI" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="4b0c9afb55db9f4ca3736c5c90f745c92c03d52f"
+            tools:replace="android:value" />
 
         <service
             android:name=".MyFirebaseInstanceIDService"
@@ -71,6 +76,7 @@
         <activity android:name=".DriverSettingsActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".HistorySingleActivity" />
+        <activity android:name=".DriverMapActivity" />
     </application>
 
 </manifest>

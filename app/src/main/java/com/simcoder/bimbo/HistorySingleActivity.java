@@ -153,6 +153,7 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
                         }
 
                         //WE CHECK IF THE ID IS REALLY THE DRIVER ID AND WE COMPARE WITH THE CURRENT USER TO SEE IF HE IS A USERE OR NOT
+                        // THIS IS THE WAY WE KNOW THAT DRIVER
                         if (child.getKey().equals("driver")){
                             driverId = child.getValue().toString();
                             if(!driverId.equals(currentUserId)){

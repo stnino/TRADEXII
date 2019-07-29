@@ -84,7 +84,7 @@ public class HistoryActivity extends AppCompatActivity {
         mHistoryAdapter = new HistoryAdapter(getDataSetHistory(), HistoryActivity.this);
         mHistoryRecyclerView.setAdapter(mHistoryAdapter);
 
-
+                  // WE GET THE CUSTOMER AND DRIVER FROM DRIVER MAP ACTIVITY
         customerOrDriver = getIntent().getExtras().getString("customerOrDriver");
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         getUserHistoryIds();
@@ -92,6 +92,7 @@ public class HistoryActivity extends AppCompatActivity {
         if(customerOrDriver.equals("Drivers")){
             mBalance.setVisibility(View.VISIBLE);
         }
+         // WE HAVE TO BUILD THE PAYOUTREQUEST
       mPayout.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
@@ -179,9 +180,9 @@ e.printStackTrace();
                     for(DataSnapshot history : dataSnapshot.getChildren()){
 
                         if (history.getKey() !=null)
-                           // HISTORY HAS TRUE TO IT, HMM..THIS IS A BIG PROBLEM
+                           // HISTORY HAS TRUE TO IT, HMM.[P .THIS IS A BIG PROBLEM
                             //SO WE MUST ADD THE HISTORY OF THE DETAILS HERE SO CUSTOMER CAN PULL FROM
-                            //WHICH LEADS US TO FETCH RIDE INFORMATION
+                            // WHICH LEADS US TO FETCH RIDE INFORMATION
 
                         FetchRideInformation(history.getKey());
                             //I DONT THINK IT SHOULD QUERY BASED ON HISTORY KEY, IT SHOULD QUERY ON HISTORY CUSTOMERID OR DRIVER ID
@@ -205,6 +206,7 @@ e.printStackTrace();
              //IT SHOULD NOT BE RIDE KEY, IT SHOULD BE CUSTOMER ID , SINCE WE ARE QUERYING BASED ON CUSTOMER REQUEST
 
          DatabaseReference historyDatabase = FirebaseDatabase.getInstance().getReference().child("history").child(rideKey);
+         //RIDEKEY
         historyDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -213,7 +215,7 @@ e.printStackTrace();
 
                     //RIDEKEY ==RIDE_ID
                     //BUT WHERE DID HE PASS IT TO HISTORY SINGLE ACTIVITY
-
+                        // THIS IS WHERE RIDE ID SRARTED // WE STARTED POPULATING THE RIDE ID INTO ALL ACTIVITIES HERE
                     String rideId = dataSnapshot.getKey();
                     Long timestamp = 0L;
                     String distance = "";
@@ -226,6 +228,7 @@ e.printStackTrace();
                      int  DistanceperTime = 0;
 
                     // I have to add goods prices here Double Agreed Prices
+                    //WE WILL CLEAR OFF PRICE CALCULATIONS
 
                     if(dataSnapshot.child("timestamp").getValue() != null){
                         timestamp = Long.valueOf(dataSnapshot.child("timestamp").getValue().toString());
@@ -258,7 +261,7 @@ e.printStackTrace();
                     }
                    // HERE WE GRAB ALL THE OBJECTS SO THAT THEY CAN ALL BE SHOWN ON THE VIEW HOLDERS
                     //VERY STRONGLY IT IS LEFT - RIGHT, FROM HERE TO VIEW HOLDERS
-
+                        //we timestamp the ride
                     HistoryObject obj = new HistoryObject(rideId, getDate(timestamp));
                     resultsHistory.add(obj);
                     mHistoryAdapter.notifyDataSetChanged();
