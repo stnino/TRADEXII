@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:layout_marginLeft="10dp"
-    android:layout_marginStart="10dp"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+   android:padding="10dp"
+    android:orientation="horizontal">
+
+    <android.support.v4.widget.CircleImageView
+        android:id="@+id/traderPicture"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:padding="2dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:civ_boarder_color="@color/colorPrimaryDark"
+        app:civ_boarder_width="1dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/cast_ic_mini_controller_closed_caption" />
 
     <TextView
         android:id="@+id/displayname"
@@ -28,8 +51,31 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/productTime"
+        android:layout_marginTop="2dp"
+        android:text="Show days uploaded"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/productprice"
+        android:layout_marginTop="2dp"
+        android:text="Shows Price of Product"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tradername"
+        android:layout_marginTop="2dp"
+        android:text="Shows name of Trader"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/displaynamesagain"
         android:layout_marginTop="2dp"
         android:text="Display Category of Product"/>
-
+    </LinearLayout>
 </LinearLayout>
