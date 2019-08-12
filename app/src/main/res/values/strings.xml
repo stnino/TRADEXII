@@ -109,4 +109,19 @@
     <string name="phoness">phone</string>
     <string name="pay_heress">Pay Here</string>
     <string name="for_users">for user</string>
+    <string name="navigation_drawer_things">navigation drawer things</string>
+    <string name="my_string_mr_chooser_searching">my @string/mr_chooser_searching</string>
+    <string name="zoom_in_content">zoom in content</string>
+    <string name="zoom_out">zoom_out</string>
+    <string name="logout">logout</string>
+    <string name="working">Working</string>
+    <string name="settings">Settings</string>
+    <string name="history">history</string>
+    <string name="picked_customer">picked customer</string>
+    <string name="destination">Destination: --</string>
+    <string name="customerprofileimage">customerProfileImage</string>
+    <string name="picked_customer">picked customer</string>
+    <string name="destination">Destination: --</string>
+    <string name="accessibility">accessibility</string>
+    <string name="changedriveravailable">changedriveravailable</string>
 </resources>

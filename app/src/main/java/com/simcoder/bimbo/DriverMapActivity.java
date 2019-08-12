@@ -76,6 +76,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 public class DriverMapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener, RoutingListener {
 
     private GoogleMap mMap;
@@ -255,6 +256,8 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
     private DatabaseReference assignedCustomerPickupLocationRef;
     private ValueEventListener assignedCustomerPickupLocationRefListener;
     private void getAssignedCustomerPickupLocation(){
+        //WE GOT CUSTOMER LOCATION FROM HERE
+
         assignedCustomerPickupLocationRef = FirebaseDatabase.getInstance().getReference().child("customerRequest").child(customerId).child("l");
         assignedCustomerPickupLocationRefListener = assignedCustomerPickupLocationRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -292,6 +295,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         routing.execute();
     }
               // WE CAN DETECT CUSTOMER DESTINATION HEREFR
+    //CUSTOMER MUST SET SOME DESTINATION PRIOR
     private void getAssignedCustomerDestination(){
         String driverId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference assignedCustomerRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverId).child("customerRequest");
@@ -466,6 +470,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         if(getApplicationContext()!=null){
                    //
             if(!customerId.equals("")){
+                //WE CALCULATE RIDE DISTANCE USING THIS PROTOCOL
                 rideDistance += mLastLocation.distanceTo(location)/1000;
             }
 
@@ -488,6 +493,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
 
                 default:
                     geoFireAvailable.removeLocation(userId);
+
                     geoFireWorking.setLocation(userId, new GeoLocation(location.getLatitude(), location.getLongitude()));
                     break;
             }

@@ -1,5 +1,6 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,56 +16,100 @@
         tools:layout="@layout/simple_gallery_item" />
 
 
-
-
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/buttons"
-            style="?android:buttonBarStyle">
+            style="?android:buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/mypersonnavigation"
+                android:layout_width="63dp"
+                android:layout_height="57dp"
+                android:contentDescription="@string/navigation_drawer_things"
+                android:src="@drawable/com_facebook_profile_picture_blank_portrait"
+                tools:src="@mipmap/ic_default_user" />
+
             <Button
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:id="@+id/logout"
-                android:text="@string/logout"
                 style="?android:attr/borderlessButtonStyle"
-                />
-            <Button
-                android:layout_weight="1"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+                android:text="@string/logout" />
+
+            <Button
                 android:id="@+id/history"
-                android:text="@string/history"
-                style="?android:attr/borderlessButtonStyle"/>
-            <Button
-                android:layout_weight="1"
-                android:layout_width="0dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/history" />
+
+            <Button
                 android:id="@+id/settings"
-                android:text="@string/settings"
-                style="?android:attr/borderlessButtonStyle"/>
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/settings" />
         </LinearLayout>
 
         <android.support.v7.widget.CardView
-            android:layout_below="@+id/buttons"
-            android:layout_width="match_parent"
+            android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20sp">
+            android:layout_below="@+id/buttons"
+            android:layout_marginBottom="20sp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="20sp">
 
-            <fragment
-                android:id="@+id/place_autocomplete_fragment"
-                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+            <!--Insert the spinner into the post -->
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="wrap_content">
+
+                <fragment
+                    android:id="@+id/place_autocomplete_fragment"
+                    android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                    android:layout_width="262dp"
+                    android:layout_height="wrap_content"
+                    tools:layout="@layout/place_autocomplete_fragment" />
+
+                <SearchView
+                    android:id="@+id/mysearchbox"
+                    android:layout_width="262dp"
+                    android:layout_height="wrap_content"
+
+                    />
 
 
-                tools:layout="@layout/place_autocomplete_fragment" />
+
+
+                <ImageButton
+                    android:id="@+id/gosearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:contentDescription="@string/my_string_mr_chooser_searching"
+                    android:src="@android:drawable/ic_media_play"
+                    tools:ignore="RtlCompat" />
+
+            </RelativeLayout>
         </android.support.v7.widget.CardView>
+
+
     </RelativeLayout>
 
 
@@ -122,6 +167,7 @@
                     android:layout_gravity="center"
                     android:numStars="5"
                     android:stepSize="0.1"/>
+
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -166,6 +212,52 @@
                 />
         </LinearLayout>
     </LinearLayout>
+
+
+    <ImageButton
+        android:id="@+id/zoom_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300sp"
+        android:layout_marginStart="300sp"
+
+        android:src="@drawable/quantum_ic_clear_white_24"
+        android:contentDescription="@string/zoom_in_content"
+        android:layout_marginLeft="300sp" />
+
+
+    <ImageButton
+        android:id="@+id/see_full_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="300sp"
+        android:layout_marginStart="300sp"
+
+        android:layout_marginTop="340sp"
+        android:contentDescription="@string/zoom_in_content"
+        android:src="@drawable/quantum_ic_clear_white_24" />
+    <ImageButton
+        android:id="@+id/change_driver_available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="370sp"
+        android:layout_marginStart="300sp"
+
+        android:src="@drawable/quantum_ic_clear_white_24"
+        android:contentDescription="@string/changedriveravailable"
+        android:layout_marginLeft="300sp" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/messagefloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_marginTop="400sp"
+        android:layout_marginLeft="150sp"
+        android:layout_marginStart="150sp"
+        android:src="@android:drawable/btn_plus"
+        android:focusable="true" />
 
 
 

@@ -14,14 +14,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <fragment
+      <!--  <fragment
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout="@layout/activity_history_single"
             />
-
+-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,12 +71,13 @@
                     android:text="@string/namess"
                     android:layout_marginBottom="20sp"
                     android:id="@+id/userName"/>
+
                 <TextView
+                    android:id="@+id/userPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/phoness"
                     android:layout_marginBottom="20sp"
-                    android:id="@+id/userPhone"/>
+                    android:text="@string/phoness" />
             </LinearLayout>
         </LinearLayout>
         <RatingBar
