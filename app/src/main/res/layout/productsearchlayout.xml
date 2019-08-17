@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -7,16 +7,22 @@
    android:padding="10dp"
     android:orientation="horizontal">
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
     <android.support.v4.widget.CircleImageView
         android:id="@+id/traderPicture"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_gravity="center"
         android:padding="2dp"
-        android:src="@mipmap/ic_launcher_round"
+        android:src="@mipmap/ic_default_user"
         app:civ_boarder_color="@color/colorPrimaryDark"
-        app:civ_boarder_width="1dp"
-        />
+        app:civ_boarder_width="1dp" />
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +35,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/cast_ic_mini_controller_closed_caption" />
+        app:srcCompat="@drawable/cast_ic_mini_controller_closed_caption"
+        android:id="@+id/productPicss"/>
 
     <TextView
         android:id="@+id/displayname"
@@ -76,6 +83,24 @@
         android:layout_height="wrap_content"
         android:id="@+id/displaynamesagain"
         android:layout_marginTop="2dp"
-        android:text="Display Category of Product"/>
+        android:text="Display name  of Product"/>
+
+        <ImageView
+            android:id="@+id/ratings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/mr_vol_type_audiotrack_light" />
     </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="400dp"
+    >
+
+
 </LinearLayout>
+</LinearLayout>
+</FrameLayout>

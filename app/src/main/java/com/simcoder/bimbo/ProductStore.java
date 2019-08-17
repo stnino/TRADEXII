@@ -40,7 +40,7 @@ public class ProductStore extends AppCompatActivity {
     ArrayList<String> TraderName;
     ArrayList<String>TraderID;
     ArrayList<String>Ratings;
-
+    ProductSearchAdapter ProductSearchAdapter;
 
 
     public ProductStore() {
@@ -115,6 +115,7 @@ public class ProductStore extends AppCompatActivity {
            String categoryNames = snapshot.child(productID).child(categoryIDs).child("categoryName").getValue(String.class);
            String productTimes = snapshot.child(productID).child("productTime").getValue(String.class);
            String traderIDs = snapshot.child(productID).child("traderID").getValue(String.class);
+           String traderImage = databaseReference.child("Users").child("Drivers").child(traderIDs).child("profileImageUrl");
            String traderNames = snapshot.child(productID).child("traderName").getValue(String.class);
 
            if (productName.contains(searchedString)){
@@ -142,7 +143,9 @@ public class ProductStore extends AppCompatActivity {
                 break;
 
            }
-   }}
+
+            ProductSearchAdapter = new ProductSearchAdapter(ProductStore.this, traderPic , productImage,  productID,   productName, productImage,   productTime, ArrayList<String>categoryName, ArrayList<String> TraderName,  ArrayList<String>TraderID,   ArrayList<String>Ratings,productPrice)
+    }}
 
        @Override
        public void onCancelled(DatabaseError databaseError) {
