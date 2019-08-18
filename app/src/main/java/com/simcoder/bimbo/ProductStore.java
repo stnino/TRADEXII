@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Driver;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -29,6 +30,7 @@ public class ProductStore extends AppCompatActivity {
     EditText search_edit_text;
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
+
     FirebaseUser FirebaseUser;
 
 
@@ -99,6 +101,7 @@ public class ProductStore extends AppCompatActivity {
 
 
     }
+           String traderImages;
             private void setAdapter(final  String searchedString){
 
    databaseReference.child("Product").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -115,8 +118,21 @@ public class ProductStore extends AppCompatActivity {
            String categoryNames = snapshot.child(productID).child(categoryIDs).child("categoryName").getValue(String.class);
            String productTimes = snapshot.child(productID).child("productTime").getValue(String.class);
            String traderIDs = snapshot.child(productID).child("traderID").getValue(String.class);
-           String traderImage = databaseReference.child("Users").child("Drivers").child(traderIDs).child("profileImageUrl");
+           final DatabaseReference traderImage = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(traderIDs).child("profileImageUrl");
+           traderImage.addListenerForSingleValueEvent(new ValueEventListener() {
+               @Override
+               public void onDataChange(DataSnapshot dataSnapshot) {
+                   traderImages =  dataSnapshot.getValue().toString();
+               }
+
+               @Override
+               public void onCancelled(DatabaseError databaseError) {
+
+               }
+           });
+
            String traderNames = snapshot.child(productID).child("traderName").getValue(String.class);
+
 
            if (productName.contains(searchedString)){
 
