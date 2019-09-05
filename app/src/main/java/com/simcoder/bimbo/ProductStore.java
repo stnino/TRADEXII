@@ -34,14 +34,17 @@ public class ProductStore extends AppCompatActivity {
     FirebaseUser FirebaseUser;
 
 
-    ArrayList<String> productID;
+    ArrayList<String> productIDs;
     ArrayList<String> productName;
-    ArrayList<String>productImage;
+    ArrayList<String>productPic;
     ArrayList<String>productTime;
     ArrayList<String>CategoryName;
     ArrayList<String> TraderName;
     ArrayList<String>TraderID;
+    ArrayList<String>TraderPic;
     ArrayList<String>Ratings;
+    ArrayList<String>ProductPrice;
+
     ProductSearchAdapter ProductSearchAdapter;
 
 
@@ -67,15 +70,16 @@ public class ProductStore extends AppCompatActivity {
         layoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
 
-        productID = new ArrayList<>();
+        productIDs = new ArrayList<>();
         productName = new ArrayList<>();
-        productImage= new ArrayList<>();
+        productPic= new ArrayList<>();
         productTime = new ArrayList<>();
         CategoryName = new ArrayList<>();
         TraderName = new ArrayList<>();
         TraderID = new ArrayList<>();
+        TraderPic = new ArrayList<>();
         Ratings = new ArrayList<>();
-
+        ProductPrice = new ArrayList<>();
 
 
 
@@ -94,6 +98,19 @@ public class ProductStore extends AppCompatActivity {
                 if (!s.toString().isEmpty()) {
                    setAdapter(s.toString());
 
+                }else{
+                    productIDs.clear();
+                    productName.clear();
+                    productPic.clear();
+                    productTime.clear();
+                    CategoryName.clear();
+                    TraderName.clear();
+                    TraderID.clear();
+                    TraderPic.clear();
+                    Ratings.clear();
+                    ProductPrice.clear();
+                    recyclerView.removeAllViews();
+
                 }
             }
         });
@@ -104,9 +121,13 @@ public class ProductStore extends AppCompatActivity {
            String traderImages;
             private void setAdapter(final  String searchedString){
 
-   databaseReference.child("Product").addListenerForSingleValueEvent(new ValueEventListener() {
+
+                databaseReference.child("Product").addListenerForSingleValueEvent(new ValueEventListener() {
        @Override
        public void onDataChange(DataSnapshot dataSnapshot) {
+          // clears the list for every brand new search
+
+
 
            int counter =0;
        for (DataSnapshot snapshot: dataSnapshot.getChildren()){
@@ -122,7 +143,7 @@ public class ProductStore extends AppCompatActivity {
            traderImage.addListenerForSingleValueEvent(new ValueEventListener() {
                @Override
                public void onDataChange(DataSnapshot dataSnapshot) {
-                   traderImages =  dataSnapshot.getValue().toString();
+                   traderImages = dataSnapshot.getValue().toString();
                }
 
                @Override
@@ -130,24 +151,22 @@ public class ProductStore extends AppCompatActivity {
 
                }
            });
-
            String traderNames = snapshot.child(productID).child("traderName").getValue(String.class);
 
-
-           if (productName.contains(searchedString)){
+           if (productNames.toLowerCase().contains(searchedString)){
 
                productName.add(productNames);
-               productImage.add(productImages);
+               productPic.add(productImages);
                CategoryName.add(categoryNames);
                productTime.add(productTimes);
                TraderName.add(traderNames);
                TraderID.add(traderIDs);
                counter++;
            }
-           else if((productName.contains(searchedString))){
+           else if((productNames.toLowerCase().contains(searchedString))){
 
                productName.add(productNames);
-               productImage.add(productImages);
+               productPic.add(productImages);
                CategoryName.add(categoryNames);
                productTime.add(productTimes);
                TraderName.add(traderNames);
@@ -157,11 +176,14 @@ public class ProductStore extends AppCompatActivity {
 
            if (counter ==15){
                 break;
-
+// IN OTHER ACTIVITIES WE CAN SET THE COUNTER AND THEN SWITCH TO ANOTHER ADAPTER TO POPULATE AND WE CAN BUILD MORE ADAPTERS IF THERE EXISTS SOME
+               // BUT I NEED TO UNDERSTAND MORE ON THE UI FRAMEWORK , BECAUSE THE COMPLEXITY MAKES IT INNOVATIVE
+               // NO ORDINARY CODES, ///
            }
 
-            ProductSearchAdapter = new ProductSearchAdapter(ProductStore.this, traderPic , productImage,  productID,   productName, productImage,   productTime, ArrayList<String>categoryName, ArrayList<String> TraderName,  ArrayList<String>TraderID,   ArrayList<String>Ratings,productPrice)
-    }}
+            ProductSearchAdapter = new ProductSearchAdapter(ProductStore.this, TraderPic , productPic,  productIDs,   productName,    productTime, CategoryName, TraderName,TraderID,Ratings,ProductPrice );
+              recyclerView.setAdapter(ProductSearchAdapter);
+     }}
 
        @Override
        public void onCancelled(DatabaseError databaseError) {
